@@ -15,25 +15,30 @@ const num2 = Math.floor(Math.random() * 10)
 const suma = num1 + num2
 numOperacion.textContent = num1 + "+" + num2
 
-inputs = [nombre, correo, contraseña, operacion, condiciones, repetirContraseña]
+inputs = [nombre, correo, contraseña, repetirContraseña, operacion, condiciones]
 
 function validarVacio() {
     let contadorVacio = 0
     let errorVacio = document.getElementById("errorVacio")
+    let boolVacio
     for (input of inputs) {
         if (input.value.trim() === "") {
             contadorVacio+= 1
             input.style.border = "2px solid red"
         }
+        else {  
+            revertirCambiosVisuales(input, errorVacio)
+        }
     }
 
     if (contadorVacio>0) {
-        errorVacio.textContent = "Debe rellenar todas las casillas obligatorias" 
-    }
-    else {  
-        revertirCambiosVisuales(input, errorVacio)
-    }
-
+        errorVacio.textContent = "Debe rellenar todas las casillas obligatorias"
+        boolVacio = true
+    } 
+    else {
+        boolVacio = false;
+}
+    return boolVacio
 }
 
 function validarContraseña() {
@@ -69,18 +74,15 @@ function validarRepetirContraseña() {
     if (repetirContraseña.value !== contraseña.value) {
         cambiosVisuales(repetirContraseña, errorContraseñaNoCoincide, "Contraseña no coincide")
     }
-    else
+    else {
         revertirCambiosVisuales(repetirContraseña, errorContraseñaNoCoincide)
-
+    }
 }
 
 function validarOperacion() {
     const errorOperacion = document.getElementById("errorOperacion")
-    const num1 = Math.floor(Math.random() * 10)
-    const num2 = Math.floor(Math.random() * 10)
-    const suma = num1 + num2
-
-    if (operacion.value.trim() !== suma) {
+    
+    if (operacion.value.trim() != suma)  {
         cambiosVisuales(operacion, errorOperacion, "Respuesta errónea")
     }
     else {
@@ -98,12 +100,14 @@ function revertirCambiosVisuales(casilla, error) {
     error.textContent = "" 
 }
 
+
 function validarFormulario() {
 crearCuenta.addEventListener("click", function() {
-    validarVacio()
-    validarContraseña()
-    validarRepetirContraseña()
-    validarOperacion()
+    if  (validarVacio() == false) {
+        validarContraseña()
+        validarRepetirContraseña()
+        validarOperacion() 
+    }
 })
 }
 validarFormulario()
