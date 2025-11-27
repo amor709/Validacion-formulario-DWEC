@@ -1,5 +1,3 @@
-
-
 const crearCuenta = document.getElementById("crear")
 const nombre = document.getElementById("nombre")
 const correo = document.getElementById("correo")
@@ -8,7 +6,6 @@ const repetirContraseña = document.getElementById("repetirContraseña")
 const operacion = document.getElementById("operacion")
 const numOperacion = document.getElementById("numOperacion")
 const condiciones = document.getElementById("condiciones")
-
 
 const num1 = Math.floor(Math.random() * 10)
 const num2 = Math.floor(Math.random() * 10)
@@ -39,6 +36,19 @@ function validarVacio() {
         boolVacio = false;
 }
     return boolVacio
+}
+
+function validarCorreo() {
+    const valorCorreo = correo.value.trim()
+    const errorCorreo = document.getElementById("errorCorreo")
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex.test(valorCorreo)) {
+        cambiosVisuales(valorCorreo, errorCorreo, "Correo inválido")
+    }
+    else {
+        revertirCambiosVisuales(valorCorreo, errorCorreo)
+    }
+
 }
 
 function validarContraseña() {
@@ -107,7 +117,8 @@ crearCuenta.addEventListener("click", function() {
         validarContraseña()
         validarRepetirContraseña()
         validarOperacion() 
-    }
+        validarCorreo()
+   }
 })
 }
 validarFormulario()
