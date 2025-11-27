@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ejercicio1.css">
+    <title>ejercicios_html</title>
+</head>
+<body>
+
+    <h1>Ejercicios formularios</h1>
+
+    <form action="id"></form>
+
+        <label for="nombre">Introduzca su nombres <span>*</span></label> <br>
+        <input type="text" id="nombre" placeholder="Nombre Apellido"><br>    
+
+        <label for="correo">Introduzca su correo <span>*</span></label> <br>
+        <input type="email" id="correo" placeholder="example@example.xxx"><br>
+
+        <label for="contraseña">Introduzca su contraseña <span>*</span></label> <br>
+        <input type="password" id="contraseña"><br>
+        <small class="error" id="errorNumCaracteres"></small>   
+        <small class="error" id="errorNoDigitos"></small> 
+
+        <label for="repetirContraseña">Confirme su contraseña <span>*</span></label> <br>
+        <input type="password" id="repetirContraseña"><br>
+        <small class="error" id="errorContraseñaNoCoincide"></small>  
+
+        <label for="operacion">Introduzca el resultado de la siguiente operacion: <p id="numOperacion"></p> <span>*</span> </label> <br>
+        <input type="number" id="operacion"><br>
+        <small class="error" id="errorOperacion"></small>  
+
+        <label for="condiciones">Acepto las condiciones <span>*</span></label> 
+        <input type="checkbox" id="condiciones"><br>
+        <br>
+
+        <button id="crear">Crear la cuenta</button>
+        <small class="error" id="errorVacio"></small>
+        
+    </form>
+
+<script src="ejercicio.js"></script>
+</body>
+</html>
