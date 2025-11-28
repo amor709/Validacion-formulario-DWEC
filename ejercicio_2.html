@@ -9,7 +9,17 @@
 
     <h1>Ejercicio formulario 2</h1>
 
-    <form>
+    <form action="id">
+        <label for="user">Introduzca su nombre de usuario <span>*</span></label> <br>
+        <input type="text" id="user"><br>    
+
+        <label for="contraseña">Introduzca su contraseña <span>*</span></label> <br>
+        <input type="password" id="contraseña"><br>
+        <small class="error" id="errorContraseña"></small>   
+
+        <label for="correo">Elija su población <span>*</span></label> <br>
+        <input type="email" id="correo" placeholder="example@example.xxx"><br>
+        <small class="error" id="errorCorreo"></small>
 
     </form>
 

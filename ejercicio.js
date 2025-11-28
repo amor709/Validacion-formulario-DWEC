@@ -39,16 +39,14 @@ function validarVacio() {
 }
 
 function validarCorreo() {
-    const valorCorreo = correo.value.trim()
     const errorCorreo = document.getElementById("errorCorreo")
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!regex.test(valorCorreo)) {
-        cambiosVisuales(valorCorreo, errorCorreo, "Correo inválido")
+    if (!regex.test(correo.value.trim())) {
+        cambiosVisuales(correo, errorCorreo, "Correo inválido")
     }
     else {
-        revertirCambiosVisuales(valorCorreo, errorCorreo)
+        revertirCambiosVisuales(correo, errorCorreo)
     }
-
 }
 
 function validarContraseña() {
@@ -100,6 +98,17 @@ function validarOperacion() {
     }
 }
 
+function validarCondiciones() {
+    const errorCondiciones = document.getElementById("errorCondiciones")
+    
+    if (!condiciones.checked) {
+        cambiosVisuales(condiciones, errorCondiciones, "Debe aceptar las condiciones")
+    }
+    else{
+        revertirCambiosVisuales(condiciones, errorCondiciones)
+    }
+}
+
 function cambiosVisuales(casilla, error, mensaje) {
     casilla.style.border = "2px solid red"
     error.textContent = mensaje 
@@ -118,6 +127,7 @@ crearCuenta.addEventListener("click", function() {
         validarRepetirContraseña()
         validarOperacion() 
         validarCorreo()
+        validarCondiciones()
    }
 })
 }
